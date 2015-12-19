@@ -397,7 +397,8 @@ class MoveToFirstLine extends Motion
     0
 
   moveCursor: (cursor) ->
-    cursor.setBufferPosition [@getRow(), cursor.getBufferColumn()]
+    cursor.goalColumn = cursor.getBufferColumn()
+    cursor.setBufferPosition [@getRow(), cursor.goalColumn]
 
 # keymap: G
 class MoveToLastLine extends MoveToFirstLine
