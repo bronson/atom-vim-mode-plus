@@ -810,6 +810,17 @@ describe "Motion", ->
           selectedText: "  2\n 3a"
           cursor: [2, 3]
 
+  describe "the G and gg keybindings", ->
+    it "saves the top goal position", ->
+      set text: "12345\n123\n", cursor: [0, 4]
+      ensure 'G', cursor: [1, 2]
+      ensure 'gg', cursor: [0, 4]
+
+    it "saves the bottom goal position", ->
+      set text: "123\n12345\n", cursor: [1, 4]
+      ensure 'gg', cursor: [0, 2]
+      ensure 'G', cursor: [1, 4]
+
   describe "the N% keybinding", ->
     beforeEach ->
       set
